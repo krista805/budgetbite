@@ -1,17 +1,33 @@
 // Budget Controller
 var budgetController = (function() {
 
+	//creating custom data types for expense and income. Doing it this way because there may be alot of expenses and income
+	var Expense = function(id, description, value) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
 
+	var Income = function(id, description, value) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
 
-	// return {
-	// 	//add method. this inner function will always has access to variables and parameters of it's outer function, even if the outer function has already returned. This all works because of closures. var x and var add are in the closure, therefore they will not return in the console.
+	
+	var data = {
+		allItems: {
+			exp: [],
+			inc: []
+		},
 
-	// };
-	// in the console: budgetController.publicTest(5)-> 28
+		totals: {
+			exp: 0,
+			inc: 0
+		}
+	}
 
 })();
-
-
 
 
 // UI Controller
