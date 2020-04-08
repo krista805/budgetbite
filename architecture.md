@@ -9,3 +9,5 @@ To-Do List
 Implements module pattern
 
 Data encapsulation allows us to hide the implmentation details of a specifc module from the outside scope. Will only expose the public interface (reffered to the API)
+
+- want to create an initilaztion function 
