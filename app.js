@@ -69,7 +69,7 @@ var budgetController = (function() {
 // UI Controller
 var UIController = (function() {
 
-	//create an object to store strings. Used to keep strings in one location should you decids to change the class names down the road. Cleaner option
+	//create an object to store strings. Used to keep strings in one location should you decide to change the class names down the road. Cleaner option
 	var DOMstrings = {
 		inputType: '.add__type',
 		inputDescription: '.add__description',
@@ -110,6 +110,21 @@ var UIController = (function() {
 			// Insert the HTML into the DOM
 			document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
+		},
+
+		clearFields: function() {
+			var fields, fieldsArr;
+
+			fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
+
+			//wont slice (return a copy of the array) by fields.slice() because fields isnt an array so you cant use the array methods
+			fieldsArr = Array.prototype.slice.call(fields);
+
+			fieldsArr.forEach(function(current, index, array) {
+				current.value = "";
+			});
+
+			fieldsArr[0].focus();
 		},
 
 		getDOMstrings: function() {
@@ -157,6 +172,9 @@ var controller = (function(budgetCtrl, UICtrl) {
 
 		//3. Add the new items to the UI
 		UICtrl.addListItem(newItem, input.type);
+
+		// 4. Clear the fields
+		UICtrl.clearFields();
 
 		//4. Calculate the budget
 
